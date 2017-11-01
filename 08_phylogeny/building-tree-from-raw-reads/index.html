@@ -9,28 +9,28 @@
         <meta name="description" content="病原微生物高通量测序数据分析">
       
       
-        <link rel="canonical" href="https://indexofire.github.io/pangs/">
+        <link rel="canonical" href="https://indexofire.github.io/pangs/08_phylogeny/building-tree-from-raw-reads/">
       
       
         <meta name="author" content="Mark Renton">
       
       
-        <link rel="shortcut icon" href="./assets/images/favicon.png">
+        <link rel="shortcut icon" href="../../assets/images/favicon.png">
       
       <meta name="generator" content="mkdocs-0.17.0, mkdocs-material-1.5.4">
     
     
       
-        <title>Pathogen NGS Documents</title>
+        <title>8.2-数据为NGS测序数据 - Pathogen NGS Documents</title>
       
     
     
-      <script src="./assets/javascripts/modernizr-56ade86843.js"></script>
+      <script src="../../assets/javascripts/modernizr-56ade86843.js"></script>
     
     
-      <link rel="stylesheet" href="./assets/stylesheets/application-b1a1975878.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application-b1a1975878.css">
       
-        <link rel="stylesheet" href="./assets/stylesheets/application-f78e5cb881.palette.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-f78e5cb881.palette.css">
       
     
     
@@ -79,8 +79,12 @@
           
             
               
+                <span class="md-header-nav__parent">
+                  8-进化树构建
+                </span>
+              
             
-            1-前言
+            8.2-数据为NGS测序数据
           
         </span>
       </div>
@@ -143,54 +147,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        1-前言
-      </label>
-    
-    <a href="." title="1-前言" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../.." title="1-前言" class="md-nav__link">
       1-前言
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#commands" title="Commands" class="md-nav__link">
-    Commands
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" title="Project layout" class="md-nav__link">
-    Project layout
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -198,10 +159,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       8-进化树构建
@@ -219,7 +182,7 @@
 
 
   <li class="md-nav__item">
-    <a href="08_phylogeny/building-tree-from-assembly/" title="8.1-数据为基因组序列" class="md-nav__link">
+    <a href="../building-tree-from-assembly/" title="8.1-数据为基因组序列" class="md-nav__link">
       8.1-数据为基因组序列
     </a>
   </li>
@@ -229,11 +192,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="08_phylogeny/building-tree-from-raw-reads/" title="8.2-数据为NGS测序数据" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+    
+    <a href="./" title="8.2-数据为NGS测序数据" class="md-nav__link md-nav__link--active">
       8.2-数据为NGS测序数据
     </a>
+    
   </li>
 
         
@@ -256,29 +226,6 @@
 <nav class="md-nav md-nav--secondary">
   
   
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#commands" title="Commands" class="md-nav__link">
-    Commands
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" title="Project layout" class="md-nav__link">
-    Project layout
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
   
 </nav>
                   </div>
@@ -291,21 +238,9 @@
               
                 
                 
-                <h1 id="welcome-to-mkdocs">Welcome to MkDocs<a class="headerlink" href="#welcome-to-mkdocs" title="Permanent link">&para;</a></h1>
-<p>For full documentation visit <a href="http://mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h2>
-<ul>
-<li><code class="codehilite">mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code class="codehilite">mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code class="codehilite">mkdocs build</code> - Build the documentation site.</li>
-<li><code class="codehilite">mkdocs help</code> - Print this help message.</li>
-</ul>
-<h2 id="project-layout">Project layout<a class="headerlink" href="#project-layout" title="Permanent link">&para;</a></h2>
-<div class="codehilite"><pre><span></span>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</pre></div>
+                  <h1>8.2-数据为NGS测序数据</h1>
+                
+                
                 
                   
                 
@@ -324,20 +259,20 @@ docs/
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-        
-          <a href="08_phylogeny/building-tree-from-assembly/" title="8.1-数据为基因组序列" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../building-tree-from-assembly/" title="8.1-数据为基因组序列" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
-                  Next
+                  Previous
                 </span>
                 8.1-数据为基因组序列
               </span>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
           </a>
+        
         
       </nav>
     </div>
@@ -365,8 +300,8 @@ docs/
       
     </div>
     
-      <script src="./assets/javascripts/application-0b7df094bf.js"></script>
-      <script>app.initialize({url:{base:"."}})</script>
+      <script src="../../assets/javascripts/application-0b7df094bf.js"></script>
+      <script>app.initialize({url:{base:"../.."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
       
@@ -376,11 +311,11 @@ docs/
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script>
       
-        <script src="./assets/js/umlconvert.js"></script>
+        <script src="../../assets/js/umlconvert.js"></script>
       
-        <script src="./search/require.js"></script>
+        <script src="../../search/require.js"></script>
       
-        <script src="./search/search.js"></script>
+        <script src="../../search/search.js"></script>
       
     
     

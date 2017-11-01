@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="病原微生物高通量测序数据分析">
+      
+      
+        <link rel="canonical" href="https://indexofire.github.io/pangs/08_phylogeny/building-tree-from-assembly/">
+      
+      
+        <meta name="author" content="Mark Renton">
+      
+      
+        <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      
+      <meta name="generator" content="mkdocs-0.17.0, mkdocs-material-1.5.4">
+    
+    
+      
+        <title>8.1-数据为基因组序列 - Pathogen NGS Documents</title>
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr-56ade86843.js"></script>
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application-b1a1975878.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-f78e5cb881.palette.css">
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    
+  </head>
+  
+  
+  
+  
+    <body data-md-color-primary="light-blue" data-md-color-accent="">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <a href="https://indexofire.github.io/pangs" title="Pathogen NGS Documents" class="md-icon md-icon--home md-header-nav__button">
+          </a>
+        
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
+          
+            
+              
+                <span class="md-header-nav__parent">
+                  8-进化树构建
+                </span>
+              
+            
+            8.1-数据为基因组序列
+          
+        </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          
+<div class="md-search" data-md-component="search">
+  <div class="md-search__overlay"></div>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">close</button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <div class="md-header-nav__source">
+          
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    
+      <i class="md-icon md-icon--home md-nav__button"></i>
+    
+    Pathogen NGS Documents
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="1-前言" class="md-nav__link">
+      1-前言
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      8-进化树构建
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        8-进化树构建
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        8.1-数据为基因组序列
+      </label>
+    
+    <a href="./" title="8.1-数据为基因组序列" class="md-nav__link md-nav__link--active">
+      8.1-数据为基因组序列
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1. 数据准备" class="md-nav__link">
+    1. 数据准备
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2. 数据质控" class="md-nav__link">
+    2. 数据质控
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" title="2.1 物种鉴定" class="md-nav__link">
+    2.1 物种鉴定
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3. 数据分析" class="md-nav__link">
+    3. 数据分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-core-genes" title="3.1 基于core genes的分析方法" class="md-nav__link">
+    3.1 基于core genes的分析方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-roary" title="3.1.1 roary" class="md-nav__link">
+    3.1.1 roary
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#312-get_homologs" title="3.1.2 get_homologs" class="md-nav__link">
+    3.1.2 get_homologs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-mums" title="3.2 基于MUMs的分析方法" class="md-nav__link">
+    3.2 基于MUMs的分析方法
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-parsnp" title="3.2.1 parsnp" class="md-nav__link">
+    3.2.1 parsnp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-progressmauve" title="3.2.2 progressMauve" class="md-nav__link">
+    3.2.2 progressMauve
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-mugsy" title="3.2.3 Mugsy" class="md-nav__link">
+    3.2.3 Mugsy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-kmer" title="3.3 基于kmer的分析方法" class="md-nav__link">
+    3.3 基于kmer的分析方法
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-ksnp3" title="3.3.1 kSNP3" class="md-nav__link">
+    3.3.1 kSNP3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-andi" title="3.3.2 andi" class="md-nav__link">
+    3.3.2 andi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333" title="3.3.3" class="md-nav__link">
+    3.3.3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../building-tree-from-raw-reads/" title="8.2-数据为NGS测序数据" class="md-nav__link">
+      8.2-数据为NGS测序数据
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" title="1. 数据准备" class="md-nav__link">
+    1. 数据准备
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" title="2. 数据质控" class="md-nav__link">
+    2. 数据质控
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" title="2.1 物种鉴定" class="md-nav__link">
+    2.1 物种鉴定
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" title="3. 数据分析" class="md-nav__link">
+    3. 数据分析
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-core-genes" title="3.1 基于core genes的分析方法" class="md-nav__link">
+    3.1 基于core genes的分析方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-roary" title="3.1.1 roary" class="md-nav__link">
+    3.1.1 roary
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#312-get_homologs" title="3.1.2 get_homologs" class="md-nav__link">
+    3.1.2 get_homologs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-mums" title="3.2 基于MUMs的分析方法" class="md-nav__link">
+    3.2 基于MUMs的分析方法
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-parsnp" title="3.2.1 parsnp" class="md-nav__link">
+    3.2.1 parsnp
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-progressmauve" title="3.2.2 progressMauve" class="md-nav__link">
+    3.2.2 progressMauve
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-mugsy" title="3.2.3 Mugsy" class="md-nav__link">
+    3.2.3 Mugsy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-kmer" title="3.3 基于kmer的分析方法" class="md-nav__link">
+    3.3 基于kmer的分析方法
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-ksnp3" title="3.3.1 kSNP3" class="md-nav__link">
+    3.3.1 kSNP3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-andi" title="3.3.2 andi" class="md-nav__link">
+    3.3.2 andi
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333" title="3.3.3" class="md-nav__link">
+    3.3.3
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="assembly">Assembly 数据的进化树构建<a class="headerlink" href="#assembly" title="Permanent link">&para;</a></h1>
+<p>传统的细菌基因组测序结果构建进化树，一般参用reads比对到reference genome上后，获得各个样本的snp位点序列，通过将所有序列连锁后可以获得所要分析的样本的SNP序列，以此序列构建进化树。</p>
+<p>对于输入数据为已经拼接完成的assembly序列，就要采用其他的方法获得snp位点了。比如用kmer（ksnp3）的方法获取snp位点，也可以获得core-genes，将核心基因的序列比对获得相应的SNP位点。</p>
+<p>基于assembly数据构建进化树的工具往往开发较早，出现在NGS发展之前，一般来说缺少多线程的支持。</p>
+<h2 id="1">1. 数据准备<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>从 NCBI Assembly 数据库下载 gff 格式的数据。对于基因组测序reads数据，可以用spades拼接获得scaffolds.fasta后，用prokka生成gff格式的文件。将所有的gff文件放在一个目录中。</p>
+<h2 id="2">2. 数据质控<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p>即使是assembly数据库中ref seq的数据，也建议进行质控后选择。对于非refseq的数据更要仔细验证后选择，否则后面分析会浪费大量精力和时间。</p>
+<h3 id="21">2.1 物种鉴定<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span>$ kraken
+</pre></div>
+
+
+<h2 id="3">3. 数据分析<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="31-core-genes">3.1 基于core genes的分析方法<a class="headerlink" href="#31-core-genes" title="Permanent link">&para;</a></h3>
+<p>同一物种的细菌会携带核心基因组</p>
+<p>需要注意的是细菌存在大量的recombination，如果只分析snp，那么indel等需要去除，同时要把recombination造成的snp也去除。</p>
+<h3 id="311-roary">3.1.1 roary<a class="headerlink" href="#311-roary" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span>$ roary -cd <span class="m">100</span> -e --mafft -p <span class="m">40</span> -f output *.gff
+  <span class="c1"># 参数说明:</span>
+  <span class="c1"># -cd 100 表示只有100%的基因组均包括的基因，才做为 core genes，默认是 99%</span>
+  <span class="c1"># -e --mafft 用mafft进行多重序列比对</span>
+  <span class="c1"># -p 40 使用多线程</span>
+  <span class="c1"># -f output 输出结果到output目录</span>
+</pre></div>
+
+
+<p>获得的 core_gene_alignment.aln 是用mafft生成的比对文件。可用来构建进化树。</p>
+<div class="codehilite"><pre><span></span>$ raxml -f a -p <span class="m">12345</span> -x <span class="m">12345</span> -#100 -s core_gene_alignment.aln -n cg -m GTRGAMMAI -T <span class="m">40</span>
+</pre></div>
+
+
+<h4 id="312-get_homologs">3.1.2 get_homologs<a class="headerlink" href="#312-get_homologs" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>$
+</pre></div>
+
+
+<h3 id="32-mums">3.2 基于MUMs的分析方法<a class="headerlink" href="#32-mums" title="Permanent link">&para;</a></h3>
+<h4 id="321-parsnp">3.2.1 parsnp<a class="headerlink" href="#321-parsnp" title="Permanent link">&para;</a></h4>
+<ul>
+<li>reference non-free</li>
+</ul>
+<p>Harvest工具中的parsnp可以用来快速鉴定同一种菌的基因组进化关系，特点是速度特别快，适合做同一种菌的近源基因组序列关系分析。如果同一种菌的菌株的序列差异较大，存在较多IS序列，会造成比对的基因组覆盖度区域过低，比如400个Bacillus cereus的菌株比对，只有1%的参考序列可以覆盖到。这种情况下就不适合使用harvest。而比如甲型副伤寒沙门菌高度保守，可以用parsnp来快速构建基因组进化图。如果覆盖度不够，应考虑使用mugsy，mauve等工具进行分析。</p>
+<p>parsnp其精度比基于mapping的SNP分析略低，但速度快的多。</p>
+<div class="codehilite"><pre><span></span>$ parsnp -g ref.gbk -d fna -c -x
+  <span class="c1"># 参数说明</span>
+  <span class="c1"># -g ref.gbk 表示选择gbk格式的基因组做为参考序列</span>
+  <span class="c1"># -d fna 表示用fna目录下的fasta格式文件做为输入数据</span>
+  <span class="c1"># -c 表示使用fna目录下的所有基因组</span>
+  <span class="c1"># -C 10000 表示跨越基因组10k长区域</span>
+  <span class="c1"># -x 用phipack去除重组</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>$ harvestools -i parsnp.ggr -S output.snp
+$ mafft --maxiterate <span class="m">1000</span> --localpair output.snp &gt; output.mafft
+$ raxml -f a -p <span class="m">12345</span> -x <span class="m">12345</span> -#100 -s output.mafft -n snp -m GTRGAMMA -T <span class="m">40</span>
+</pre></div>
+
+
+<h4 id="322-progressmauve">3.2.2 progressMauve<a class="headerlink" href="#322-progressmauve" title="Permanent link">&para;</a></h4>
+<ul>
+<li>reference free</li>
+</ul>
+<p>Mauve工具使用java开发的</p>
+<div class="codehilite"><pre><span></span>$ progressMauve --output<span class="o">=</span>output.xmfa *.gbk
+</pre></div>
+
+
+<h4 id="323-mugsy">3.2.3 Mugsy<a class="headerlink" href="#323-mugsy" title="Permanent link">&para;</a></h4>
+<ul>
+<li>reference free</li>
+</ul>
+<p>mugsy这些工具由于</p>
+<div class="codehilite"><pre><span></span>$ mugsy -p mugsy *.fasta
+$ mugsyWGA -i output.xmfa
+</pre></div>
+
+
+<p><strong>参考文献：</strong></p>
+<blockquote>
+<p><a href="https://www.ncbi.nlm.nih.gov/pubmed/21148543">Angiuoli SV and Salzberg SL. Mugsy: Fast multiple alignment of closely related whole genomes. Bioinformatics 2011 27(3):334-4</a></p>
+</blockquote>
+<h3 id="33-kmer">3.3 基于kmer的分析方法<a class="headerlink" href="#33-kmer" title="Permanent link">&para;</a></h3>
+<h4 id="331-ksnp3">3.3.1 kSNP3<a class="headerlink" href="#331-ksnp3" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>$ kSNP3
+</pre></div>
+
+
+<h4 id="332-andi">3.3.2 andi<a class="headerlink" href="#332-andi" title="Permanent link">&para;</a></h4>
+<h4 id="333">3.3.3<a class="headerlink" href="#333" title="Permanent link">&para;</a></h4>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../.." title="1-前言" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                1-前言
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../building-tree-from-raw-reads/" title="8.2-数据为NGS测序数据" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                8.2-数据为NGS测序数据
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2017 HZCDCLab
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        and
+        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application-0b7df094bf.js"></script>
+      <script>app.initialize({url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sequence-diagrams/1.0.6/sequence-diagram-min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script>
+      
+        <script src="../../assets/js/umlconvert.js"></script>
+      
+        <script src="../../search/require.js"></script>
+      
+        <script src="../../search/search.js"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
