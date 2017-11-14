@@ -10,10 +10,12 @@ extra:
     primary: 'light blue'
 
 pages:
-  - '1-前言': index.md
-  - '8-进化树构建':
-    - '8.1-数据为基因组序列': 08_phylogeny/building-tree-from-assembly.md
-    - '8.2-数据为NGS测序数据': 08_phylogeny/building-tree-from-raw-reads.md
+  - '1.前言': index.md
+  - '7.序列比对':
+    - '7.1 mafft使用': 07_msa/mafft.md
+  - '8.进化树构建':
+    - '8.1 数据为基因组序列': 08_phylogeny/building-tree-from-assembly.md
+    - '8.2 数据为NGS测序数据': 08_phylogeny/building-tree-from-raw-reads.md
 
 use_directory_urls: true
 

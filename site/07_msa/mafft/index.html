@@ -9,7 +9,7 @@
         <meta name="description" content="病原微生物高通量测序数据分析">
       
       
-        <link rel="canonical" href="https://indexofire.github.io/pangs/08_phylogeny/building-tree-from-raw-reads/">
+        <link rel="canonical" href="https://indexofire.github.io/pangs/07_msa/mafft/">
       
       
         <meta name="author" content="Mark Renton">
@@ -21,7 +21,7 @@
     
     
       
-        <title>8.2-数据为NGS测序数据 - Pathogen NGS Documents</title>
+        <title>7.1-mafft使用 - Pathogen NGS Documents</title>
       
     
     
@@ -80,11 +80,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  8-进化树构建
+                  7-序列比对
                 </span>
               
             
-            8.2-数据为NGS测序数据
+            7.1-mafft使用
           
         </span>
       </div>
@@ -159,10 +159,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       7-序列比对
@@ -178,11 +180,68 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../07_msa/mafft/" title="7.1-mafft使用" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        7.1-mafft使用
+      </label>
+    
+    <a href="./" title="7.1-mafft使用" class="md-nav__link md-nav__link--active">
       7.1-mafft使用
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="基本用法" class="md-nav__link">
+    基本用法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-mafft" title="基于 web 在线的 Mafft 工具" class="md-nav__link">
+    基于 web 在线的 Mafft 工具
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="新增序列" class="md-nav__link">
+    新增序列
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="结果输出" class="md-nav__link">
+    结果输出
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -195,12 +254,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
       8-进化树构建
@@ -218,7 +275,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../building-tree-from-assembly/" title="8.1-数据为基因组序列" class="md-nav__link">
+    <a href="../../08_phylogeny/building-tree-from-assembly/" title="8.1-数据为基因组序列" class="md-nav__link">
       8.1-数据为基因组序列
     </a>
   </li>
@@ -228,18 +285,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-    
-    <a href="./" title="8.2-数据为NGS测序数据" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../08_phylogeny/building-tree-from-raw-reads/" title="8.2-数据为NGS测序数据" class="md-nav__link">
       8.2-数据为NGS测序数据
     </a>
-    
   </li>
 
         
@@ -255,15 +305,82 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" title="基本用法" class="md-nav__link">
+    基本用法
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-mafft" title="基于 web 在线的 Mafft 工具" class="md-nav__link">
+    基于 web 在线的 Mafft 工具
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="新增序列" class="md-nav__link">
+    新增序列
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" title="结果输出" class="md-nav__link">
+    结果输出
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>8.2-数据为NGS测序数据</h1>
-                
-                
+                <h1 id="mafft">Mafft 构建多重序列比对<a class="headerlink" href="#mafft" title="Permanent link">&para;</a></h1>
+<h2 id="_1">基本用法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span>$ mafft --auto input &gt; output
+</pre></div>
+
+
+<h2 id="web-mafft">基于 web 在线的 Mafft 工具<a class="headerlink" href="#web-mafft" title="Permanent link">&para;</a></h2>
+<p>对于个人电脑上无法开展 mafft 比对，比如无 Linux 环境或者大量序列的比对等，可以通过在线 mafft 工具来实现多重序列比对。</p>
+<ul>
+<li><a href="https://mafft.cbrc.jp/alignment/server/large.html">CBRC Mafft Server</a></li>
+<li><a href="https://www.ebi.ac.uk/Tools/msa/mafft/">EBI Mafft Server</a></li>
+<li><a href="http://www.genome.jp/tools-bin/mafft">GenomeJP Mafft Server</a></li>
+<li><a href="https://myhits.isb-sib.ch/cgi-bin/mafft">MyHits Mafft Server</a></li>
+<li><a href="http://www.trex.uqam.ca/index.php?action=mafft">T-REX Mafft Server</a></li>
+<li><a href="https://toolkit.tuebingen.mpg.de/#/tools/mafft">MPI Mafft Server</a></li>
+</ul>
+<h2 id="_2">新增序列<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>当你需要新增序列到原来已经比对好的结果中时，如果重新计算所有序列则会浪费大量时间，mafft 提供了 --add，--addfull 参数来实现添加新序列到原比对中。</p>
+<h2 id="_3">结果输出<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>输出的比对结果默认是 fasta 格式的，如果想输出 clustal 格式，可以加上参数<code class="codehilite">--clustalout</code>。</p>
                 
                   
                 
@@ -282,7 +399,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../building-tree-from-assembly/" title="8.1-数据为基因组序列" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../.." title="1-前言" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -291,11 +408,25 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                8.1-数据为基因组序列
+                1-前言
               </span>
             </div>
           </a>
         
+        
+          <a href="../../08_phylogeny/building-tree-from-assembly/" title="8.1-数据为基因组序列" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                8.1-数据为基因组序列
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>
