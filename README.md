@@ -1,1 +1,1 @@
-# Pathogen NGS Notebook
+# **Pa**thogen **ngs** notebook
