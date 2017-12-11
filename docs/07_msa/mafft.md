@@ -32,3 +32,8 @@ $ mafft --auto input > output
 ## 结果输出
 
 输出的比对结果默认是 fasta 格式的，如果想输出 clustal 格式，可以加上参数`--clustalout`。
+
+## Reference
+
+1. [Mafft Official Site]()
+2.
