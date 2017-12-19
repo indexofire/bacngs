@@ -1,6 +1,6 @@
-# BEAST
+# BEAST 入门教程
 
-## Linux 中安装
+## Linux 服务器中安装
 
 1. 安装 beagle
 
