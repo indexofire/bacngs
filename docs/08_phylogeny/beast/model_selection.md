@@ -20,6 +20,24 @@ SS, PS > AICM > HME
 
 HME 和 AICM 在 tracer 中提供的评估计算功能，但是 SS 和 PS tracer 中没有相应功能。要在 beauti 中的 MCMC 模块的 Marginal Likelihood estimation(MLE)中选择设置 PS 和 SS。
 
+用 PS 和 SS 生成的结果中，选择最高的 log marginal Likelihood 的那个模型。Bayers Factor(BF) 是一种相对 log marginal Likelihood 的概念，它的计算公式：
+
+ln(BF) = ln(marginal Likelihood(modelA)) - ln(marginal Likelihood(modelB))
+
+如果 ln(BF) = -530 - (-540) = 10 ，说明 modelA 比 modelB 更合适。软件生成的是 log 值，一般都是一个很小的数，因此 log 后一般为负数。
+
+beauti 生成 xml 文件中关于 PS/SS 分析的部分是：
+
+```
+<beast>
+    <steppingStoneSamplingAnalysis fileName="MLE-1.bsp.log MLE-2.bsp.log">
+        <likelihoodColumn name="pathLikelihood.delta"/>
+        <thetaColumn name="pathLikelihood.theta"/>      
+    </steppingStoneSamplingAnalysis>
+</beast>
+```
+
+
 ## Reference
 1. BAYESIAN MODEL TESTING - Guy Baele, Rega Institute, Department of Microbiology and Immunology, K.U. Leuven, Belgium.
 2. [什么是Bayesian Factor BF](http://bayesfactor.blogspot.ca/2014/02/the-bayesfactor-package-this-blog-is.html)
