@@ -1,1 +1,1 @@
-# **Pa**thogen **ngs** notebook
+# **PA**thogen **NGS** Notebook

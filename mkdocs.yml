@@ -10,7 +10,9 @@ extra:
     primary: 'light blue'
 
 pages:
-  - '1.前言': index.md
+  - '首页': index.md
+  - '1.前言':
+    - '1.4 awk和bioawk使用': 01_linux/awk.md
   - '7.序列比对':
     - '7.1 mafft使用': 07_msa/mafft.md
   - '8.进化树构建':
