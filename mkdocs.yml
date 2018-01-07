@@ -12,6 +12,8 @@ extra:
 pages:
   - '首页': index.md
   - '1.前言':
+    - '1.1 关于Linux': 01_linux/linux.md
+    - '1.2 常用Linux命令': 01_linux/cmd.md
     - '1.4 awk和bioawk使用': 01_linux/awk.md
   - '7.序列比对':
     - '7.1 mafft使用': 07_msa/mafft.md
